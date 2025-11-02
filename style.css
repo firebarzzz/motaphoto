@@ -1,0 +1,39 @@
+/*
+Theme Name: Mota Photo
+Theme URI: https://github.com/ton-username/motaphoto
+Author: Ton Nom
+Author URI: https://ton-site.com
+Description: Thème personnalisé pour photographe Nathalie Mota
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: motaphoto
+*/
+
+/* Variables CSS */
+:root {
+    --color-primary: #E00000;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-grey: #C4C4C4;
+    
+    --font-heading: 'Space Mono', monospace;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
