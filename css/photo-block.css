@@ -1,0 +1,203 @@
+/**
+ * CSS pour le bloc photo avec overlay
+ * 
+ * Structure :
+ * .photo-item > .thumbnail-wrapper > img + .thumbnail-overlay
+ */
+
+/* ===========================================
+   CONTENEUR PRINCIPAL DU BLOC PHOTO
+   =========================================== */
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    /* Transition fluide pour les effets */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol du bloc entier */
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================================
+   WRAPPER DE L'IMAGE
+   =========================================== */
+.thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* L'image elle-même */
+.thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit le conteneur en gardant les proportions */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Zoom léger de l'image au survol */
+.photo-item:hover .thumbnail-wrapper img {
+    transform: scale(1.05);
+}
+
+/* ===========================================
+   OVERLAY (apparaît au survol)
+   =========================================== */
+.thumbnail-overlay {
+    /* Positionnement absolu pour couvrir l'image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Fond semi-transparent */
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* Flexbox pour centrer les icônes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+    /* Caché par défaut */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Transition fluide */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Afficher l'overlay au survol */
+.photo-item:hover .thumbnail-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===========================================
+   ICÔNES (œil et plein écran)
+   =========================================== */
+.thumbnail-overlay .icon-eye,
+.thumbnail-overlay .icon-fullscreen {
+    /* Reset des styles par défaut */
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+    /* Taille et couleur */
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    
+    /* Transition pour les effets hover */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Image de l'icône œil */
+.icon-eye img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1); /* Rend l'image blanche */
+    transition: filter 0.3s ease;
+}
+
+/* Icône Font Awesome pour plein écran */
+.icon-fullscreen i {
+    font-size: 24px;
+}
+
+/* Effet au survol des icônes */
+.thumbnail-overlay .icon-eye:hover,
+.thumbnail-overlay .icon-fullscreen:hover {
+    transform: scale(1.2);
+    color: var(--color-primary, #E00000);
+}
+
+.icon-eye:hover img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-10deg);
+}
+
+/* ===========================================
+   INFORMATIONS DE LA PHOTO
+   =========================================== */
+.photo-info {
+    /* Positionnement en bas de l'overlay */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Flexbox pour aligner gauche/droite */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Padding et background */
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+/* Textes des infos */
+.photo-info-left,
+.photo-info-right {
+    color: #fff;
+    font-family: var(--font-body, 'Poppins', sans-serif);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Référence (à gauche) */
+.photo-reference {
+    font-weight: 500;
+}
+
+/* Catégorie (à droite) */
+.photo-category {
+    font-weight: 400;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+/* Tablette */
+@media (max-width: 1024px) {
+    .photo-info {
+        padding: 10px;
+    }
+    
+    .photo-info-left,
+    .photo-info-right {
+        font-size: 11px;
+    }
+    
+    .thumbnail-overlay .icon-eye,
+    .thumbnail-overlay .icon-fullscreen {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .thumbnail-overlay {
+        gap: 10px;
+    }
+    
+    .photo-info-left,
+    .photo-info-right {
+        font-size: 10px;
+    }
+    
+    .icon-fullscreen i {
+        font-size: 20px;
+    }
+}

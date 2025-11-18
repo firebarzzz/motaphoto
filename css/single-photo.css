@@ -1,0 +1,274 @@
+/**
+ * CSS pour la page Single Photo
+ * 
+ * Styles pour :
+ * - Layout principal (image + infos)
+ * - Métadonnées
+ * - Navigation prev/next
+ * - Photos apparentées
+ */
+
+/* ===========================================
+   LAYOUT PRINCIPAL
+   =========================================== */
+.single-photo-page {
+    padding-top: 100px; /* Espace pour le header fixe */
+}
+
+.photo-main {
+    padding: var(--spacing-lg) 0;
+}
+
+.photo-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+/* ===========================================
+   IMAGE PRINCIPALE
+   =========================================== */
+.photo-image-container {
+    position: relative;
+}
+
+.photo-main-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 70vh;
+}
+
+/* ===========================================
+   INFORMATIONS DE LA PHOTO
+   =========================================== */
+.photo-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Titre */
+.photo-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Métadonnées */
+.photo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid var(--color-grey);
+}
+
+.meta-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-grey);
+}
+
+.meta-value {
+    font-family: var(--font-body);
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/* ===========================================
+   ACTIONS (Boutons)
+   =========================================== */
+.photo-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-top: var(--spacing-md);
+}
+
+/* Bouton "Cette photo vous intéresse ?" */
+.btn-contact-photo {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-contact-photo:hover {
+    background: var(--color-black);
+}
+
+/* Bouton plein écran */
+.btn-fullscreen {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-fullscreen:hover {
+    background: var(--color-primary);
+}
+
+.btn-fullscreen i {
+    font-size: 18px;
+}
+
+/* ===========================================
+   NAVIGATION PREV/NEXT
+   =========================================== */
+.photo-navigation {
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-grey-light);
+    border-bottom: 1px solid var(--color-grey-light);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-prev,
+.nav-next {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: transform var(--transition-normal);
+}
+
+.nav-prev:hover {
+    transform: translateX(-5px);
+}
+
+.nav-next:hover {
+    transform: translateX(5px);
+}
+
+.nav-arrow {
+    font-size: 24px;
+    color: var(--color-black);
+}
+
+.nav-thumbnail {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.nav-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--transition-normal);
+}
+
+.nav-prev:hover .nav-thumbnail img,
+.nav-next:hover .nav-thumbnail img {
+    opacity: 0.7;
+}
+
+/* ===========================================
+   PHOTOS APPARENTÉES
+   =========================================== */
+.related-photos {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.related-photos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+/* Tablette */
+@media (max-width: 1024px) {
+    .photo-main-grid {
+        gap: var(--spacing-lg);
+    }
+    
+    .photo-title {
+        font-size: 28px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .single-photo-page {
+        padding-top: 80px;
+    }
+    
+    .photo-main-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .photo-main-image {
+        max-height: 50vh;
+    }
+    
+    .photo-title {
+        font-size: 24px;
+    }
+    
+    .meta-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .photo-actions {
+        flex-direction: column;
+    }
+    
+    .btn-contact-photo {
+        width: 100%;
+    }
+    
+    .btn-fullscreen {
+        width: 100%;
+    }
+    
+    /* Navigation */
+    .nav-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+    
+    /* Photos apparentées */
+    .related-photos-grid {
+        grid-template-columns: 1fr;
+    }
+}

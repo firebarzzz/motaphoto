@@ -6,45 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?php wp_head(); ?>
 </head>
+
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
 <header class="site-header">
     <div class="header-container">
+
         <!-- Logo -->
         <div class="site-logo">
             <a href="<?php echo esc_url(home_url('/')); ?>">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" 
+                     alt="<?php bloginfo('name'); ?>">
             </a>
         </div>
-        
+
         <!-- Navigation Desktop -->
         <nav class="main-navigation" role="navigation">
-            <?php
-            wp_nav_menu(array(
+            <?php wp_nav_menu([
                 'theme_location' => 'main-menu',
-                'menu_class' => 'nav-menu',
-                'container' => false,
-                'fallback_cb' => false
-            ));
-            ?>
+                'menu_class'     => 'nav-menu',
+                'container'      => false,
+                'fallback_cb'    => false
+            ]); ?>
+
+            <!-- Bouton Contact -->
+            <button id="open-modal-button-header" class="btn-contact-header">
+                CONTACT
+            </button>
         </nav>
-        
-        <!-- Burger menu (mobile) -->
+
+        <!-- Menu burger (mobile) -->
         <button class="menu-toggle" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
     </div>
 </header>
 
+<!-- Menu mobile -->
 <div class="mobile-menu">
-    <?php
-    wp_nav_menu(array(
+    <?php wp_nav_menu([
         'theme_location' => 'main-menu',
-        'menu_class' => 'mobile-nav-menu',
-        'container' => false
-    ));
-    ?>
+        'menu_class'     => 'mobile-nav-menu',
+        'container'      => false
+    ]); ?>
 </div>
+
+</body>
+</html>
