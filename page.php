@@ -1,25 +1,36 @@
 <?php
 /**
- * The template for displaying all single posts
+ * Template : Pages standards
+ * 
+ * Affiche les pages WordPress classiques (À propos, Mentions légales, etc.)
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @package Mota_Photo
  */
 
 get_header();
+?>
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
-	get_template_part( 'template-parts/content/content-page' );
+<main class="site-main">
+    <div class="container">
+        <?php
+        while (have_posts()) :
+            the_post();
+            ?>
+            <article id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
+                
+                <header class="page-header">
+                    <h1 class="page-title"><?php the_title(); ?></h1>
+                </header>
+                
+                <div class="page-content">
+                    <?php the_content(); ?>
+                </div>
+                
+            </article>
+            <?php
+        endwhile;
+        ?>
+    </div>
+</main>
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
-endwhile; // End of the loop.
-
-get_footer();
+<?php get_footer(); ?>

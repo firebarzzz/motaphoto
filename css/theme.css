@@ -129,7 +129,7 @@ button {
 }
 
 .site-logo img {
-    height: 40px;
+    height: 10px;
     width: auto;
 }
 
@@ -559,6 +559,38 @@ footer {
     margin-top: var(--spacing-sm);
     font-family: var(--font-heading);
 }
+
+
+/* ===========================================
+   PAGES STANDARDS
+   =========================================== */
+.site-main {
+    padding-top: 120px; /* Espace pour header fixe */
+    padding-bottom: var(--spacing-xl);
+    min-height: 60vh;
+}
+
+.page-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+}
+
+.page-content {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.page-content p {
+    margin-bottom: var(--spacing-md);
+}
+
+
+
+
 
 /* ===========================================
    RESPONSIVE
