@@ -30,10 +30,7 @@
                 'fallback_cb'    => false
             ]); ?>
 
-            <!-- Bouton Contact -->
-            <button id="open-modal-button-header" class="btn-contact-header">
-                CONTACT
-            </button>
+             
         </nav>
 
         <!-- Menu burger (mobile) -->

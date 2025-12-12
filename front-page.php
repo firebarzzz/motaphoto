@@ -61,47 +61,52 @@ get_header();
 <section class="filters-and-sort">
 
     <!-- Filtre Catégorie -->
-    <select id="filter-categorie" name="category-filter">
-        <option value="ALL">CATÉGORIES</option>
-
-        <?php
-        $categories = get_terms([
-            'taxonomy'   => 'categorie-photo',
-            'hide_empty' => false,
-        ]);
-
-        foreach ($categories as $cat) :
-        ?>
-            <option value="<?php echo esc_attr($cat->slug); ?>">
-                <?php echo esc_html($cat->name); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    <div class="filter-item">
+        <label for="filter-categorie" class="sr-only">Catégorie</label>
+        <select id="filter-categorie" name="category-filter">
+            <option value="ALL">CATÉGORIES</option>
+            <?php
+            $categories = get_terms([
+                'taxonomy'   => 'categorie-photo',
+                'hide_empty' => false,
+            ]);
+            foreach ($categories as $cat) :
+            ?>
+                <option value="<?php echo esc_attr($cat->slug); ?>">
+                    <?php echo esc_html($cat->name); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
     <!-- Filtre Format -->
-    <select id="filter-format" name="format-filter">
-        <option value="ALL">FORMATS</option>
-
-        <?php
-        $formats = get_terms([
-            'taxonomy'   => 'format',
-            'hide_empty' => false,
-        ]);
-
-        foreach ($formats as $format) :
-        ?>
-            <option value="<?php echo esc_attr($format->slug); ?>">
-                <?php echo esc_html($format->name); ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    <div class="filter-item">
+        <label for="filter-format" class="sr-only">Format</label>
+        <select id="filter-format" name="format-filter">
+            <option value="ALL">FORMATS</option>
+            <?php
+            $formats = get_terms([
+                'taxonomy'   => 'format',
+                'hide_empty' => false,
+            ]);
+            foreach ($formats as $format) :
+            ?>
+                <option value="<?php echo esc_attr($format->slug); ?>">
+                    <?php echo esc_html($format->name); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
     <!-- Tri par date -->
-    <select id="filter-date" name="date-sort">
-        <option value="DESC">TRIER PAR</option>
-        <option value="DESC">Plus récentes</option>
-        <option value="ASC">Plus anciennes</option>
-    </select>
+    <div class="filter-item">
+        <label for="filter-date" class="sr-only">Trier par date</label>
+        <select id="filter-date" name="date-sort">
+            <option value="DESC">TRIER PAR</option>
+            <option value="DESC">Plus récentes</option>
+            <option value="ASC">Plus anciennes</option>
+        </select>
+    </div>
 
 </section>
 

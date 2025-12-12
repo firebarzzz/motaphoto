@@ -1,14 +1,5 @@
 /**
  * Theme CSS Principal - Mota Photo
- * 
- * Ce fichier contient les styles généraux :
- * - Variables CSS
- * - Reset et typographie
- * - Header et navigation
- * - Hero section
- * - Footer
- * - Modale de contact
- * - Utilitaires
  */
 
 /* ===========================================
@@ -21,23 +12,23 @@
     --color-white: #FFFFFF;
     --color-grey: #C4C4C4;
     --color-grey-light: #F5F5F5;
-    
+
     /* Polices */
     --font-heading: 'Space Mono', monospace;
     --font-body: 'Poppins', sans-serif;
-    
+
     /* Espacements */
     --spacing-xs: 8px;
     --spacing-sm: 16px;
     --spacing-md: 24px;
     --spacing-lg: 48px;
     --spacing-xl: 80px;
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
+
     /* Largeur max du contenu */
     --container-max: 1440px;
 }
@@ -64,7 +55,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Typographie */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 400;
@@ -94,7 +84,6 @@ button {
     background: none;
 }
 
-/* Container */
 .container {
     max-width: var(--container-max);
     margin: 0 auto;
@@ -104,90 +93,37 @@ button {
 /* ===========================================
    HEADER
    =========================================== */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: var(--color-white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
 .header-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-sm) var(--spacing-md);
-    max-width: var(--container-max);
-    margin: 0 auto;
-}
-
-/* Logo */
-.site-logo a {
-    display: block;
+    padding: 20px 40px;
 }
 
 .site-logo img {
-    height: 10px;
-    width: auto;
+    height: 20px;
 }
 
-/* Navigation Desktop */
 .main-navigation {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 40px;
 }
 
 .nav-menu {
     display: flex;
+    gap: 40px;
     list-style: none;
-    gap: var(--spacing-md);
-    align-items: center;
 }
 
 .nav-menu li a {
     font-family: var(--font-heading);
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: var(--spacing-xs) 0;
-    position: relative;
-}
-
-/* Soulignement animé au survol */
-.nav-menu li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: width var(--transition-normal);
-}
-
-.nav-menu li a:hover::after,
-.nav-menu li.current-menu-item a::after {
-    width: 100%;
-}
-
-/* Bouton Contact dans le header */
-.btn-contact-header {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--color-black);
-    background: transparent;
-    transition: all var(--transition-normal);
-}
-
-.btn-contact-header:hover {
-    background: var(--color-black);
-    color: var(--color-white);
+    letter-spacing: 2px;
+    color: #000;
 }
 
 /* ===========================================
@@ -198,8 +134,6 @@ button {
     flex-direction: column;
     gap: 5px;
     padding: 10px;
-    background: none;
-    border: none;
     cursor: pointer;
 }
 
@@ -211,7 +145,6 @@ button {
     transition: all var(--transition-normal);
 }
 
-/* Animation du burger en X */
 .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -224,7 +157,6 @@ button {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Menu mobile (caché par défaut) */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -264,9 +196,9 @@ button {
    =========================================== */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 782px;
     min-height: 600px;
-    margin-top: 70px; /* Hauteur du header fixe */
+    margin-top: 70px;
     overflow: hidden;
 }
 
@@ -275,20 +207,16 @@ button {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
 }
 
-/* Image de titre centrée sur le hero */
 .hero-image img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 80%;
-    height: auto;
 }
 
-/* Alternative : Image directe dans le hero */
 .hero img.hero-photo {
     width: 100%;
     height: 100%;
@@ -307,7 +235,11 @@ button {
     flex-wrap: wrap;
 }
 
-.filters-and-sort select {
+.filters-and-sort .filter-item {
+    flex: 1 1 180px;
+}
+
+.filters-and-sort .filter-item select {
     font-family: var(--font-heading);
     font-size: 14px;
     padding: var(--spacing-xs) var(--spacing-sm);
@@ -316,7 +248,6 @@ button {
     cursor: pointer;
     min-width: 150px;
     appearance: none;
-    /* Flèche personnalisée */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23000'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
@@ -324,10 +255,9 @@ button {
     transition: border-color var(--transition-fast);
 }
 
-.filters-and-sort select:hover,
-.filters-and-sort select:focus {
+.filters-and-sort .filter-item select:hover,
+.filters-and-sort .filter-item select:focus {
     border-color: var(--color-black);
-    outline: none;
 }
 
 /* ===========================================
@@ -341,6 +271,7 @@ button {
     padding: 0 var(--spacing-md);
     max-width: var(--container-max);
     margin: 0 auto;
+    position: relative;
 }
 
 /* ===========================================
@@ -379,30 +310,30 @@ button {
 /* ===========================================
    FOOTER
    =========================================== */
-footer {
-    background: var(--color-grey-light);
-    padding: var(--spacing-md);
-    margin-top: var(--spacing-xl);
-}
-
-.footer-menu ul {
+.menu-footer-container {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-lg);
+}
+
+.footer-menu {
+    display: flex;
+    gap: 40px;
     list-style: none;
-    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    align-items: center;
 }
 
 .footer-menu li a {
-    font-family: var(--font-body);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--color-black);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #000;
 }
 
 .footer-menu li a:hover {
-    color: var(--color-primary);
+    color: #555;
 }
 
 /* ===========================================
@@ -447,7 +378,6 @@ footer {
     color: var(--color-primary);
 }
 
-/* Formulaire Contact Form 7 */
 .wpcf7-form label {
     font-family: var(--font-heading);
     font-size: 12px;
@@ -471,7 +401,6 @@ footer {
 .wpcf7-form input:focus,
 .wpcf7-form textarea:focus {
     border-color: var(--color-black);
-    outline: none;
 }
 
 .wpcf7-form input[type="submit"] {
@@ -499,7 +428,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0,0,0,0.95);
     z-index: 3000;
     justify-content: center;
     align-items: center;
@@ -545,13 +474,8 @@ footer {
     color: var(--color-primary);
 }
 
-.lightbox-prev {
-    left: -60px;
-}
-
-.lightbox-next {
-    right: -60px;
-}
+.lightbox-prev { left: -60px; }
+.lightbox-next { right: -60px; }
 
 .lightbox-info {
     text-align: center;
@@ -560,12 +484,11 @@ footer {
     font-family: var(--font-heading);
 }
 
-
 /* ===========================================
    PAGES STANDARDS
    =========================================== */
 .site-main {
-    padding-top: 120px; /* Espace pour header fixe */
+    padding-top: 120px;
     padding-bottom: var(--spacing-xl);
     min-height: 60vh;
 }
@@ -589,81 +512,133 @@ footer {
 }
 
 
+/* ===========================================
+   THUMBNAILS – Overlay et icônes
+   =========================================== */
+.thumbnail-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+/* Icônes œil et fullscreen */
+.thumbnail-overlay .icon-eye,
+.thumbnail-overlay .icon-fullscreen {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.thumbnail-overlay .icon-eye img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.thumbnail-overlay .icon-eye:hover img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-10deg);
+}
+
+.thumbnail-overlay .icon-fullscreen i {
+    font-size: 24px;
+}
+
+.thumbnail-overlay .icon-eye:hover,
+.thumbnail-overlay .icon-fullscreen:hover {
+    transform: scale(1.2);
+    color: var(--color-primary);
+}
+
+/* Infos référence et catégorie */
+.photo-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
 
 
 /* ===========================================
    RESPONSIVE
    =========================================== */
-
-/* Tablette */
 @media (max-width: 1024px) {
     .photo-grid,
     .thumbnail-container-accueil {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .nav-menu {
         gap: var(--spacing-sm);
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    /* Header */
-    .main-navigation {
-        display: none;
-    }
-    
-    .menu-toggle {
-        display: flex;
-    }
-    
-    /* Hero */
-    .hero {
-        height: 60vh;
-        min-height: 400px;
-    }
-    
-    /* Filtres */
+    .main-navigation { display: none; }
+    .menu-toggle { display: flex; }
+
+    .hero { height: 60vh; min-height: 400px; }
+
     .filters-and-sort {
         flex-direction: column;
-        gap: var(--spacing-sm);
+        gap: 12px;
+        align-items: stretch;
+        padding: var(--spacing-lg) var(--spacing-md);
     }
-    
-    .filters-and-sort select {
+
+    .filters-and-sort .filter-item {
+        flex: 1 1 100%;
+    }
+
+    .filters-and-sort .filter-item select {
         width: 100%;
         max-width: 300px;
     }
-    
-    /* Grille */
+
     .photo-grid,
     .thumbnail-container-accueil {
         grid-template-columns: 1fr;
     }
-    
-    /* Footer */
-    .footer-menu ul {
+
+    .footer-menu {
         flex-direction: column;
         align-items: center;
         gap: var(--spacing-sm);
     }
-    
-    /* Lightbox */
-    .lightbox-nav {
-        font-size: 24px;
-    }
-    
-    .lightbox-prev {
-        left: 10px;
-    }
-    
-    .lightbox-next {
-        right: 10px;
-    }
+
+    .lightbox-nav { font-size: 24px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
 }
-
-
-
 
 
