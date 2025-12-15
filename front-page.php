@@ -15,19 +15,17 @@ get_header();
 <!-- SECTION HERO (photo aléatoire) -->
 <!-- ========================= -->
 <section class="hero">
-
     <?php
     // Récupérer une photo aléatoire pour le hero
     $hero_query = new WP_Query([
-        'post_type'      => 'photo',
-        'posts_per_page' => 1,
-        'orderby'        => 'rand',
-        // Optionnel : format paysage
+        'post_type'      => 'photo', // Type de contenu "photo"
+        'posts_per_page' => 1, // Afficher un seul post
+        'orderby'        => 'rand', // Trier de manière aléatoire
         'tax_query'      => [
             [
-                'taxonomy' => 'format',
+                'taxonomy' => 'format', // Taxonomie "format"
                 'field'    => 'slug',
-                'terms'    => 'paysage',
+                'terms'    => 'paysage', // Seulement les formats "paysage"
             ],
         ],
     ]);
@@ -35,14 +33,17 @@ get_header();
     if ($hero_query->have_posts()) :
         while ($hero_query->have_posts()) : $hero_query->the_post();
 
-            $hero_url  = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            $hero_link = get_permalink();
+            $hero_url  = get_the_post_thumbnail_url(get_the_ID(), 'full'); // URL de l'image en taille "full"
+            $hero_link = get_permalink(); // Lien vers le post de la photo
     ?>
 
         <a href="<?php echo esc_url($hero_link); ?>">
             <div class="hero-image" style="background-image: url('<?php echo esc_url($hero_url); ?>');">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/titre-accueil.png"
-                     alt="<?php bloginfo('name'); ?> - Photographe">
+                <img 
+                    src="<?php echo get_template_directory_uri(); ?>/images/titre-accueil.png"
+                    alt="<?php bloginfo('name'); ?> - Photographe"
+                    class="hero-title"
+                >
             </div>
         </a>
 
@@ -52,8 +53,10 @@ get_header();
 
     wp_reset_postdata();
     ?>
-
 </section>
+
+ 
+
 
 <!-- ========================= -->
 <!-- SECTION FILTRES -->
